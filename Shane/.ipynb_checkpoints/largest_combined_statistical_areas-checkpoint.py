@@ -132,7 +132,7 @@ largest_combined_statistical_areas = [
         "location": {
             "lat": 39.9526,
             "long": -75.1652,
-            "zip_code": 19019
+            "zip_code": 19107
         }
     },
     {
@@ -149,7 +149,7 @@ largest_combined_statistical_areas = [
         "location": {
             "lat": 29.7604,
             "long": -95.3698,
-            "zip_code": 77001
+            "zip_code": 77002
         }
     },
     {
@@ -166,7 +166,7 @@ largest_combined_statistical_areas = [
         "location": {
             "lat": 25.7617,
             "long": -80.1918,
-            "zip_code": 33101
+            "zip_code": 33133
         }
     }
 ]
