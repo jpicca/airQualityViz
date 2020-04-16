@@ -33,3 +33,15 @@
 svg {
     vertical-align: top;
 }
+
+@keyframes example {
+    from {opacity: 0.1;}
+    to {opacity: 0.6;}
+}
+
+.checked {
+    animation-name: example;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

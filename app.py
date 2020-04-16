@@ -57,9 +57,13 @@ def home(cityname, year, parametername):
     # Capture user parameter selection (Ozone or PM2.5) in a variable
     parameter = parametername
 
-    # filters data by user selected date and cityname 
-    selected_data = aq_df.loc[(aq_df["year"] == dateSelected) & (
-            aq_df["cityName"] == citySelected), :]  
+    # Filter by year
+    all_cities = aq_df.loc[(aq_df["year"] == dateSelected),:]
+
+    avgCityAQI = all_cities.groupby('cityName')['AQI'].mean().to_dict()
+
+    # filters data by city name
+    selected_data = all_cities.loc[all_cities["cityName"] == citySelected, :]  
 
     # Isolates Ozone data points for the selected year and city 
     ozone_data = selected_data.loc[selected_data["ParameterName"] == parameter, :]
@@ -96,7 +100,8 @@ def home(cityname, year, parametername):
 
     final_dictionary = {
         'stacked-bar-data': month_Dict_Arr,
-        'line-plot-data': monthly_averages_dictionary
+        'line-plot-data': monthly_averages_dictionary,
+        'map-aqi': avgCityAQI
     }
 
     return jsonify(final_dictionary)
