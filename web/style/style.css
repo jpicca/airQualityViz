@@ -1,0 +1,35 @@
+#slider {
+    width: 50%;
+    float: right;
+    margin-right: 10%;
+}
+
+#sliderLabel {
+    float: right;
+    margin-right: 33%;
+}
+
+#charts {
+    width: 50%;
+    float: right;
+}
+
+#map {
+    width: 50%;
+    float: left;
+    height: 400px;
+}
+
+#dashboard {
+    float: left;
+    width: 100%;
+}
+
+#analysis, #intro {
+    float: left;
+    width: 100%;
+}
+
+svg {
+    vertical-align: top;
+}
