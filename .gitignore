@@ -1,11 +1,9 @@
 # ignore these files:
 README.md
 config.py
-largest_combined_statistical_areas.json
-state_capitals.py
-testReadInLargestCSAs.ipynb
-Untitled.ipynb
 
 # ignore these directories/folders:
 .ipynb_checkpoints
 __pychache__
+old_prev_versions
+old_not_current
