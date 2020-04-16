@@ -7,12 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Load d3.js -->
-    <html lang="en">
-      <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
         <!-- Load d3.js -->
         <script src="https://d3js.org/d3.v4.js"></script>
@@ -25,13 +19,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         
         <!-- Leaflet CSS -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
     
         <!-- Our CSS -->
         <link rel="stylesheet" type="text/css" href="style/style.css">
         <title>AIR QUALITY</title>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      </head>
+  </head>
       <body>
 
         <h1>Group 1 - Air Quality in the US</h1>
@@ -47,25 +43,30 @@
           
           <div id="slider"></div>
         </div>
-            
-          <div id="charts"></div>
+        <div id='dashboard' class='fluid-container'>
+          <div id='map'></div> 
+          <div id="charts">
+          </div>
+        </div>
   
           <!-- Create a div where the graph will take place -->
           <!--<div id="my_dataviz"></div>-->
-        <hr>
-        <h1 class="page-header">US Top 10 Map <small>Observations</small></h1>
-          <p class="lead">Right here we can just give a brief analysis of what we found from the map</p>
-          <p><mark>Lorem ipsum dolor sit amet</mark>, consectetur adipisicing elit, sed do eiusmod
-          tempor <del>incididunt ut labore</del> et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation <u>ullamco laboris nisi</u> ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <hr>  
-        <div class="jumbotron text-center">
+        <div id='analysis'>
+          <hr>
+          <h1 class="page-header">US Top 10 Map <small>Observations</small></h1>
+            <p class="lead">Right here we can just give a brief analysis of what we found from the map</p>
+            <p><mark>Lorem ipsum dolor sit amet</mark>, consectetur adipisicing elit, sed do eiusmod
+            tempor <del>incididunt ut labore</del> et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation <u>ullamco laboris nisi</u> ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <hr> 
+        </div>
+        <div class="jumbotron text-center" id='intro'>
           <div class="container text-capitalize">
             <h1>Meet the Data Scientists!</h1>
-            <p>Here to present the quality of air in the Top 10 Cities in the US</p>
+            <p>Here to present historical air quality in selected cities across the US</p>
             <!-- <a href="#" class="btn btn-primary">Read More</a> -->
           </div>
         </div>
@@ -105,7 +106,9 @@
         <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
         <!-- Leaflet JavaScript -->
-        <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
         <!-- D3 JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
         <!-- Our JavaScript -->

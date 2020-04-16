@@ -9,11 +9,25 @@
     margin-right: 33%;
 }
 
+#charts {
+    width: 50%;
+    float: right;
+}
+
 #map {
+    width: 50%;
+    float: left;
+    height: 400px;
+}
 
-    height: 100%;
-    width: 60%;
+#dashboard {
+    float: left;
+    width: 100%;
+}
 
+#analysis, #intro {
+    float: left;
+    width: 100%;
 }
 
 svg {

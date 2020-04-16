@@ -1,11 +1,13 @@
-var svgWidth = window.innerWidth;
-var svgHeight = window.innerHeight*0.7;
+//var svgWidth = window.innerWidth;
+var svgWidth = window.innerWidth*0.5;
+var svgHeight = window.innerHeight*0.75;
 
 // Formatting margins
-var margin = ({top: 10, right: 10, bottom: 20, left: 40})
+var margin = ({top: 10, right: 10, bottom: 20, left: 80})
 
 var svg = d3.select("#charts")
     .append("svg")
+    //.attr("transform","translate("+(window.innerWidth-svgWidth)+",0)") // this is new
     .attr("width", svgWidth)
     .attr("height", svgHeight);
 
@@ -15,11 +17,13 @@ var map = svg.append('g');
 
 var lineChart = svg.append('g')
     .classed('lineGroup',true)
-    .attr("transform","translate("+(svgWidth/2)+","+(svgHeight/2+margin.bottom)+")");
+    .attr("transform","translate(0,"+(svgHeight/2+margin.bottom)+")");
+    //.attr("transform","translate("+(svgWidth/2)+","+(svgHeight/2+margin.bottom)+")");
 
 var barChart = svg.append('g')
     .classed('barGroup',true)
-    .attr("transform","translate("+(svgWidth/2)+","+margin.top+")");
+    .attr("transform","translate("+(margin.left)+","+margin.top+")");
+    //.attr("transform","translate("+(svgWidth/2)+","+margin.top+")");
 
 function updateBar(barData) {
     console.log(barData)
@@ -32,7 +36,8 @@ function updateBar(barData) {
     if (init) {
         xScale = d3.scaleBand()
             .domain(barData.map(function(d){return d.month;}))
-            .range([0, (svgWidth/2)-margin.right])
+            .range([0, svgWidth-margin.right-margin.left])
+            //.range([0, (svgWidth/2)-margin.right])
             .padding(0.1);
 
         yScale = d3.scaleLinear()
@@ -59,7 +64,8 @@ function updateBar(barData) {
         const xAxis = barChart.append("g")
             .attr("id", "xAxis")
             .attr("transform", "translate(0,"+(svgHeight/2-margin.bottom)+")")
-            .call(d3.axisBottom(xScale));
+            .call(d3.axisBottom(xScale))
+            .attr('font-size',8);
         
         const yAxis = barChart.append("g")
             .attr("id", "yAxis")
