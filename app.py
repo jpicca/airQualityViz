@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import sqlalchemy
+from flask_cors import CORS
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
@@ -13,7 +14,7 @@ import datetime
 
 #postgres engine 
 # **** Note -- port number is currently 5433, but most users likely need 5432 ****
-connection_string = "postgres:postgres@localhost:5432/ELT_Project"
+connection_string = "postgres:postgres@localhost:5433/aq_db"
 engine = create_engine(f'postgresql://{connection_string}')
 
 # Query to postgres database, capture our data in a dataframe 
@@ -35,7 +36,7 @@ aq_df['month'] = aq_df['Datetime'].dt.strftime("%B")
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
+CORS(app)
 
 #################################################
 # Flask Routes
@@ -43,24 +44,25 @@ app = Flask(__name__)
 
 # D3.json will navigate to a specified url based on a given user interaction/selection  
 # Based on the route navigated to, we will feed in different data
+
 @app.route("/<cityname>/<year>/<parametername>")
 def home(cityname, year, parametername):
 
     # Capture user Year selection in a variable
-    dateSelected = year 
+    dateSelected = year
     
     # Capture user City selection in a variable
     citySelected = cityname
 
     # Capture user parameter selection (Ozone or PM2.5) in a variable
-    parametername = parametername
+    parameter = parametername
 
     # filters data by user selected date and cityname 
     selected_data = aq_df.loc[(aq_df["year"] == dateSelected) & (
-            aq_df["csaPrimaryCity"] == citySelected), :]  
+            aq_df["cityName"] == citySelected), :]  
 
     # Isolates Ozone data points for the selected year and city 
-    ozone_data = selected_data.loc[selected_data["ParameterName"] == 'OZONE', :]
+    ozone_data = selected_data.loc[selected_data["ParameterName"] == parameter, :]
 
     # Groups the ozone data by month and AQI Quality Category (good, moderate, etc.), then gets a count of each quality category for each month
     grouped_ozone_data = ozone_data.groupby(['month', 'AQICategory'])
@@ -97,7 +99,7 @@ def home(cityname, year, parametername):
         'line-plot-data': monthly_averages_dictionary
     }
 
-    return jsonify(final_dictionary) 
+    return jsonify(final_dictionary)
 
     
 

@@ -1,0 +1,21 @@
+#slider {
+    width: 50%;
+    float: right;
+    margin-right: 10%;
+}
+
+#sliderLabel {
+    float: right;
+    margin-right: 33%;
+}
+
+#map {
+
+    height: 100%;
+    width: 60%;
+
+}
+
+svg {
+    vertical-align: top;
+}
