@@ -15,7 +15,7 @@ d3.json('./counties-albers-10m.json', function(us) {
 
     
 
-    d3.json("cities.json", function(collection) {
+    d3.json("circles.json", function(collection) {
     
         var mapG = d3.select('#map').select('g')
 
