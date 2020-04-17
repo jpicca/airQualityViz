@@ -1,10 +1,23 @@
 # ignore these files:
-README.md
 config.py
+AirNowAPI_bbox_dev/Resources/config.py
+AirNowAPI/Resources/config.py
 
 # ignore these directories/folders:
 .ipynb_checkpoints
-__pychache__
+
 old_prev_versions
 old_not_current
-Shane
+
+
+
+AirNowAPI/__pycache__
+AirNowAPI/.ipynb_checkpoints
+AirNowAPI_bbox_dev/.ipynb_checkpoints
+AirNowAPI_bbox_dev/old_prev_versions
+AirNowAPI_bbox_dev/output_data/old_not_current
+AirNowAPI_bbox_dev/Resources/__pycache__
+AirNowAPI_bbox_dev/Resources/old_prev_versions
+AirNowAPI/old_prev_versions
+AirNowAPI/Resources/__pycache__
+AirNowAPI/Resources/old_prev_versions
