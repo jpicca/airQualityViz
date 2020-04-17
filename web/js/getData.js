@@ -23,8 +23,8 @@ function grabData(city,year,parameter) {
 
         });
 
-        // update bar chart
-        updateBar(barData);
+        // update bars and map 
+        updateBar(barData,lineData);
         updateMap(mapData);
 
     });

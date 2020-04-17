@@ -60,10 +60,10 @@ def home(cityname, year, parametername):
     # Filter by year
     all_cities = aq_df.loc[(aq_df["year"] == dateSelected),:]
 
-    avgCityAQI = all_cities.groupby('cityName')['AQI'].mean().to_dict()
+    avgCityAQI = all_cities.groupby('csaPrimaryCity')['AQI'].mean().to_dict()
 
     # filters data by city name
-    selected_data = all_cities.loc[all_cities["cityName"] == citySelected, :]  
+    selected_data = all_cities.loc[all_cities["csaPrimaryCity"] == citySelected, :]  
 
     # Isolates Ozone data points for the selected year and city 
     ozone_data = selected_data.loc[selected_data["ParameterName"] == parameter, :]

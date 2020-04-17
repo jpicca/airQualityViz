@@ -19,7 +19,7 @@ function sliderChange() {
 
     // Get our new value (the year) from the slider
     year = $( "#slider" ).slider( "value" );
-    d3.select('#sliderLabel').html(`Year: ${year}`)
+    d3.select('#sliderLabel').html(`Year: ${year} (Change Year with Slider!)`)
 
     console.log(`${city}, ${year}, ${parameter}`)
 
