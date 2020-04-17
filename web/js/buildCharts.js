@@ -26,9 +26,9 @@ var barChart = svg.append('g')
     //.attr("transform","translate("+(svgWidth/2)+","+margin.top+")");
 
 function updateBar(barData) {
-    console.log(barData)
+    //console.log(barData)
     var series = d3.stack().keys(catList)(barData)
-    console.log(series)
+    //console.log(series)
     var xScale;
     var yScale;
     var color;

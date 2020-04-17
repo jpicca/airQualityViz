@@ -1,6 +1,6 @@
 $( "#slider" ).slider({
     animate: "fast",
-    max: 2019,
+    max: 2020,
     min: 2015,
     // This value for our 'change' key will be the function
     // that tells d3 to make a new request to our flask API
@@ -18,8 +18,10 @@ var parameter = 'OZONE';
 function sliderChange() {
 
     // Get our new value (the year) from the slider
-    var year = $( "#slider" ).slider( "value" );
+    year = $( "#slider" ).slider( "value" );
     d3.select('#sliderLabel').html(`Year: ${year}`)
+
+    console.log(`${city}, ${year}, ${parameter}`)
 
     grabData(city,year,parameter);
     // Run our updateChart function (below) when the slider changes
@@ -33,4 +35,9 @@ d3.selectAll("input").on("change", function(){
     grabData(city,year,parameter);
 
 });
+
+function mapClick(new_city) {
+    console.log(`${city}, ${year}, ${parameter}`)
+    grabData(new_city,year,parameter);
+}
 

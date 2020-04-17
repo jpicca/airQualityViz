@@ -1,5 +1,6 @@
 var lineData;
 var barData;
+var mapData;
 var catList = ['Good','Moderate','Unhealthy for Sensitive Groups','Unhealthy','Very Unhealthy',
                 'Hazardous']
 
@@ -10,6 +11,7 @@ function grabData(city,year,parameter) {
 
         lineData = data['line-plot-data'];
         barData = data['stacked-bar-data'];
+        mapData = data['map-aqi'];
 
         barData.forEach(entry => {
         
@@ -21,10 +23,12 @@ function grabData(city,year,parameter) {
 
         });
 
+        // update bar chart
         updateBar(barData);
+        updateMap(mapData);
 
     });
 };
 
-// Initialize our charts
+// Initialize our charts the first time
 grabData(city,year,parameter);
