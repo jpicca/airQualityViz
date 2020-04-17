@@ -13,7 +13,7 @@ var svg = d3.select("#charts")
 
 var init = true;
 
-var map = svg.append('g');
+//var map = svg.append('g');
 
 var lineChart = svg.append('g')
     .classed('lineGroup',true)
@@ -72,8 +72,9 @@ function updateBar(barData) {
             .call(d3.axisLeft(yScale));
 
         barChart.append('text')
-                .attr("transform", "translate(0,"+margin.top+")")
+                .attr("transform", "translate(0,"+(margin.top/1.5)+")")
                 .text('AQI Category Distribution by Month')
+                .attr('font-size',16)
 
         barChart.selectAll('.colorLegend')
                 .data(colorList)

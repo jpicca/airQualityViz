@@ -34,7 +34,8 @@
 
         <!-- Variable updates -->
         <div class='form-check'>
-          <span id='sliderLabel'>Year: 2015</span>
+          <span id='sliderLabel'>Year: 2015 (Change Year with Slider!)</span>
+          <!-- <span id='sliderLegend'></span> -->
           <input type="radio" id="ozone" name="param" value="OZONE" checked>
           <label for="ozone">Ozone</label><br>
           <input type="radio" id="PM25" name="param" value="PM2.5">
@@ -52,14 +53,28 @@
           <!--<div id="my_dataviz"></div>-->
         <div id='analysis'>
           <hr>
-          <h1 class="page-header">US Top 10 Map <small>Observations</small></h1>
-            <p class="lead">Right here we can just give a brief analysis of what we found from the map</p>
-            <p><mark>Lorem ipsum dolor sit amet</mark>, consectetur adipisicing elit, sed do eiusmod
-            tempor <del>incididunt ut labore</del> et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation <u>ullamco laboris nisi</u> ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h1 class="page-header">Observations</h1>
+            <p class="lead">A few notes on our data.</p>
+            <p>
+              <ul>
+                <li>
+                  Ozone levels appear to increase in most cities during warmer months.
+                  This is not surprising given the tendency for higher levels of ozone on hotter days.
+                </li>
+                <li>
+                  Los Angeles, Houston, and to some extent Phoenix, appear to have the worst air quality
+                  on average across the country. Their AQI values appear to be improving, though. Better
+                  weather? Changes in regulations? More questions to ask.
+                </li>
+                <li>
+                  Based on PM2.5 values, it seems as though 2020 may be seeing a decrease in pollution,
+                  which could be related to industry slowdowns from COVID19. However, there is a lot
+                  of uncertainty with this conclusion. Similar conclusions cannot be made about Ozone, 
+                  since it is heavily influenced by temperature, and we only have data through April
+                  for 2020.
+                </li>
+              </ul>
+            </p>
           <hr> 
         </div>
         <div class="jumbotron text-center" id='intro'>
@@ -71,7 +86,7 @@
         </div>
         <!--start of members-->
         <div class="row center">
-          <!--<div class="col-md-2">
+          <div class="col-md-2">
             <img src="images/team2.jpg" class="img-thumbnail">
             <p class="text-center text-uppercase">members</p>
           </div>
@@ -94,7 +109,7 @@
           <div class="col-md-2">
             <img src="images/joseph.jpg" class="img-thumbnail">
             <p class="text-center text-uppercase">Joseph McManus</p>
-          </div>-->
+          </div>
         </div>
         <!--end of members-->
         <!-- Optional JavaScript -->

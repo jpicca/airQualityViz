@@ -26,6 +26,14 @@ d3.json('./counties-albers-10m.json', function(us) {
             .attr('font-size',20)
             .attr('x',400)
             .attr('y',20)
+
+        mapG.append('text')
+            .text("Click on a circle for that city's data!")
+            .attr('stroke','black')
+            .attr('fill','black')
+            .attr('font-size',16)
+            .attr('x',380)
+            .attr('y',45)
         
         var circles = mapG.selectAll("circle")
             .data(collection.objects)
@@ -49,14 +57,14 @@ d3.json('./counties-albers-10m.json', function(us) {
                     return false;
                 }
             })
-            .attr("r", d => mapData[d.city]/4)
+            .attr("r", d => mapData[d.city]/2)
             .attr("cx",d => projection([d.circle.coordinates[1],d.circle.coordinates[0]])[0])
             .attr("cy",d => projection([d.circle.coordinates[1],d.circle.coordinates[0]])[1])
 
         var toolTip = d3.tip()
 			.attr("class", "tooltip")
 			.attr('font-size', 40)
-            .offset([40, 40])
+            .offset([60, 40])
             .style('background','white')
 			.html(function(d) {
 			    return (`<strong>${d.city}: ${mapData[d.city].toFixed(1)}</strong>`);
@@ -91,7 +99,7 @@ function updateMap(data) {
     var mapG = d3.select('#map').select('g')
     
     mapG.selectAll("circle")
-        .attr("fill", d => {
+        .style("fill", d => {
             let colorList = ['#0e550e','#d5eb14','#c29914']
             if (data[d.city] < 50) {
                 return colorList[0]
@@ -101,6 +109,6 @@ function updateMap(data) {
                 return colorList[2]
             }
         })
-        .attr("r", d => data[d.city]/4)
+        .attr("r", d => data[d.city]/2)
 
 }

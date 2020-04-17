@@ -23,7 +23,7 @@ function grabData(city,year,parameter) {
 
         });
 
-        // update bar chart
+        // update bars and map 
         updateBar(barData);
         updateMap(mapData);
 
