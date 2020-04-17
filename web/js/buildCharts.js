@@ -104,6 +104,7 @@ function updateBar(barData,lineData) {
             .domain([0, 160])//d3.max(formatData, d => d.value)])
             .range([svgHeight-margin.bottom-margin.top,svgHeight/2+margin.top+margin.bottom])
 
+        // Colors for categories
         var colorList = ['#0e550e','#d5eb14','#c29914','#e02e01','#e008aa','#080207']
 
         color = d3.scaleOrdinal(colorList);
@@ -146,6 +147,7 @@ function updateBar(barData,lineData) {
             .attr("id", "yAxis")
             .call(d3.axisLeft(yScale));
 
+        // Add rectangular background colors to line chart
         lineChart.data([catRectGreen])
             .append('path')
             .attr("fill", "#0e550e")
