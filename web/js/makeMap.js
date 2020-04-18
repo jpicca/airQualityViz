@@ -1,3 +1,4 @@
+// Create map of U.S. using D3 and topojson 
 d3.json('./counties-albers-10m.json', function(us) {
 
     //console.log(us)
@@ -5,16 +6,17 @@ d3.json('./counties-albers-10m.json', function(us) {
     
     var projection = d3.geoAlbersUsa().scale(1300).translate([487.5, 305])
 
+    // Drawing map inside #map div 
     d3.select('#map').html(`<svg viewBox="0 0 975 610">
     <g fill="none" stroke="#000" stroke-linejoin="round" stroke-linecap="round">
       <path stroke="#aaa" stroke-width="0.5" d="${path(topojson.mesh(us, us.objects.counties, (a, b) => a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0)))}"></path>
       <path stroke-width="0.5" d="${path(topojson.mesh(us, us.objects.states, (a, b) => a !== b))}"></path>
       <path d="${path(topojson.feature(us, us.objects.nation))}"></path>
     </g>
-  </svg>`)
+    </svg>`)
 
     
-
+    // Append circles to our map, coloring them based on AQI level, adding tooltip, and sizing based on AQI level 
     d3.json("circles.json", function(collection) {
     
         var mapG = d3.select('#map').select('g')
@@ -72,6 +74,7 @@ d3.json('./counties-albers-10m.json', function(us) {
             
         mapG.call(toolTip);
 
+        // D3 event listener for tooltip 
         circles.on("mouseover", function(data) {
             toolTip.show(data, this);
             })
@@ -80,6 +83,7 @@ d3.json('./counties-albers-10m.json', function(us) {
                 toolTip.hide(data);
             });
 
+        // D3 event listener for selection of a new city 
         circles.on('click', function(d) {
             //console.log(d.city)
             city = d.city;
@@ -94,6 +98,7 @@ d3.json('./counties-albers-10m.json', function(us) {
 
 })
 
+// Function to update map runs with any change of the data (updateMap is defined in getData.js)
 function updateMap(data) {
 
     var mapG = d3.select('#map').select('g')

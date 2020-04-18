@@ -1,3 +1,4 @@
+// initialize global variables that will capture our data 
 var lineData;
 var barData;
 var mapData;
@@ -23,7 +24,7 @@ function grabData(city,year,parameter) {
 
         });
 
-        // update bars and map 
+        // run functions to update bars and map,      note: updateBar function updates bar and line graphs
         updateBar(barData,lineData);
         updateMap(mapData);
 

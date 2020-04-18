@@ -14,7 +14,7 @@ import datetime
 
 #postgres engine 
 # **** Note -- port number is currently 5433, but most users likely need 5432 ****
-connection_string = "postgres:postgres@localhost:5433/aq_db"
+connection_string = "postgres:postgres@localhost:5432/aq_db"
 engine = create_engine(f'postgresql://{connection_string}')
 
 # Query to postgres database, capture our data in a dataframe 
@@ -65,16 +65,16 @@ def home(cityname, year, parametername):
     # filters data by city name
     selected_data = all_cities.loc[all_cities["csaPrimaryCity"] == citySelected, :]  
 
-    # Isolates Ozone data points for the selected year and city 
-    ozone_data = selected_data.loc[selected_data["ParameterName"] == parameter, :]
+    # Isolates Ozone or PM2.5 data points for the selected year and city 
+    parameter_data = selected_data.loc[selected_data["ParameterName"] == parameter, :]
 
-    # Groups the ozone data by month and AQI Quality Category (good, moderate, etc.), then gets a count of each quality category for each month
-    grouped_ozone_data = ozone_data.groupby(['month', 'AQICategory'])
-    count_ozone = grouped_ozone_data['AQICategory'].count() 
+    # Groups the data by month and AQI Quality Category (good, moderate, etc.), then gets a count of each quality category for each month
+    grouped_parameter_data = parameter_data.groupby(['month', 'AQICategory'])
+    count_parameter = grouped_parameter_data['AQICategory'].count() 
     
-    # convert the count_ozone series into a dataframe that we can manipulate and structure as needed 
-    ozoneFrame = count_ozone.to_frame()
-    ozoneFrame = ozoneFrame.rename(columns={"AQICategory":"CategoryVal"}).reset_index()
+    # convert the count_parameter series into a dataframe that we can manipulate and structure as needed 
+    paramFrame = count_parameter.to_frame()
+    paramFrame = paramFrame.rename(columns={"AQICategory":"CategoryVal"}).reset_index()
 
     # Iterate through our dataframe to build out a new array of dictionaries for each month in the selected year, providing key-value pairs for each category and its respective count for the month
     monthlist = ['January', 'February', 'March','April', 'May', 'June', 'July', 'August','September','October','November','December']
@@ -82,7 +82,7 @@ def home(cityname, year, parametername):
     for month in monthlist: 
         monthDict = {}
         monthDict['month'] = month
-        dfnew = ozoneFrame[ozoneFrame['month'] == month]
+        dfnew = paramFrame[paramFrame['month'] == month]
         categorySum = dfnew['CategoryVal'].sum()
         for index, row in dfnew.iterrows():
             monthDict[row['AQICategory']] = (row['CategoryVal']/categorySum)
@@ -92,9 +92,9 @@ def home(cityname, year, parametername):
 
 
     # Line chart: average for the city for that month of the year --> actual value is 'AQI'
-    grouped_ozone_data_2 =  ozone_data.groupby(['month'])
-    average_ozone_values = grouped_ozone_data_2['AQI'].mean()
-    monthly_averages_dictionary = average_ozone_values.to_dict()
+    grouped_parameter_data_2 =  parameter_data.groupby(['month'])
+    average_parameter_values = grouped_parameter_data_2['AQI'].mean()
+    monthly_averages_dictionary = average_parameter_values.to_dict()
 
         # we will pass our monthly_averages_dictionary into our final dictionary that gets returned 
 

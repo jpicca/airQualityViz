@@ -1,3 +1,4 @@
+// Jquery tool to initialize slider on dashboard
 $( "#slider" ).slider({
     animate: "fast",
     max: 2020,
@@ -24,18 +25,16 @@ function sliderChange() {
     console.log(`${city}, ${year}, ${parameter}`)
 
     grabData(city,year,parameter);
-    // Run our updateChart function (below) when the slider changes
-    // and points to new data
-    //updateChart(dataDict[selection])
 };
 
+// Our function to run when user selects a parameter (ozone or PM2.5)
 d3.selectAll("input").on("change", function(){
     //console.log(this.value)
     parameter = this.value;
     grabData(city,year,parameter);
-
 });
 
+// Our function to run when user clicks on a new city on the map
 function mapClick(new_city) {
     console.log(`${city}, ${year}, ${parameter}`)
     grabData(new_city,year,parameter);

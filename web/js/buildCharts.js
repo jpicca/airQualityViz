@@ -25,6 +25,7 @@ var barChart = svg.append('g')
     .attr("transform","translate("+(margin.left)+","+margin.top+")");
     //.attr("transform","translate("+(svgWidth/2)+","+margin.top+")");
 
+// Define udateBar function, note: updateBar function updates our bar AND our line charts
 function updateBar(barData,lineData) {
     //console.log(barData)
     var series = d3.stack().keys(catList)(barData)
@@ -191,7 +192,8 @@ function updateBar(barData,lineData) {
                 .attr("transform", "translate(0,"+(margin.top/1.5)+")")
                 .text('AQI Category Distribution by Month')
                 .attr('font-size',16)
-
+        
+        // Bar chart legend 
         barChart.selectAll('.colorLegend')
                 .data(colorList)
                 .enter()
@@ -216,6 +218,7 @@ function updateBar(barData,lineData) {
                 .text(d => d)
                 .classed('textLegend',true)
 
+        // Set init to false after first load of visualizations 
         init = false;
 
     } else {
@@ -235,7 +238,6 @@ function updateBar(barData,lineData) {
             .attr("height", d=> yScale(d[0]) - yScale(d[1]))
 
         // Update line
-
         formatData.forEach(entry => {
             entry.month = parseTime(entry.month);
             entry.value = +entry.value;
@@ -253,11 +255,6 @@ function updateBar(barData,lineData) {
         createLine = d3.line()
             .x(data => xScaleLine(data.month))
             .y(data => yScaleLine(data.value));
-        
-        //yAxisLine = lineChart.select('#yAxisLine')
-        //    .transition()
-        //    .duration(500)
-        //    .call(d3.axisLeft(yScaleLine));
 
         lineChart.select('.linePath')
             .data([formatData])
