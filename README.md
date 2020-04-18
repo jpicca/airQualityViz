@@ -24,7 +24,7 @@
     1) html: /web/index.html
     2) css: /web/style/style.css 
     3) javascript: /web/js/getData.js 
-    3) javascript: * /web/js/makeMap.js 
+    3) javascript: /web/js/makeMap.js 
     3) javascript: /web/js/buildCharts.js 
     3) javascript: /web/js/interactions.js
 5) Presentation: presentation.pptx
