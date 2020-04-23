@@ -13,6 +13,9 @@
 * AirNow.gov API: https://docs.airnowapi.org/
   * Top 25 most populated Combined Statistical Areas in the United States
   * First 7 days of every month: Jan 2015 to Apr 2020
+  
+#### Screenshot of Dashboard
+<img src='screenshot.png'>
 
 ----
 #### Key Files:
